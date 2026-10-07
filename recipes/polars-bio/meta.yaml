@@ -40,7 +40,8 @@ requirements:
     - python
     # polars 2.0 changed headerless CSV column naming and breaks
     # scan_table/read_table; support is planned for polars-bio 0.37.0.
-    - polars >=1.37.1,<2
+    # polars < 1.40 returns wrong counts for cool/mcool scans.
+    - polars >=1.40.0,<2
     - pyarrow >=23.0.1,<25
     - datafusion >=53.0.0,<54
     - tqdm >=4.67.0,<5
