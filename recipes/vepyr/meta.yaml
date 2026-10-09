@@ -10,7 +10,7 @@ source:
   sha256: 8ddef8fa2a89b8cefba5714c3b00eec7ca7b50b3afa69a246afef5aa934d3983
 
 build:
-  number: 0
+  number: 1
   # vepyr is built with pyo3's abi3-py310 feature: one build serves every
   # Python >= 3.10, instead of one ~15 min Rust compile per Python version
   # (four of them overran the one-hour linux-aarch64 CircleCI job).
@@ -39,9 +39,10 @@ requirements:
     - maturin >=1.0,<2.0
   run:
     - python >={{ python_min }}
-    - pyarrow >=18.0
-    - polars >=1.37.1
-    - tqdm >=4.60
+    # Same ranges as polars-bio 0.36.1: polars 2.x is untested with vepyr.
+    - pyarrow >=23.0.1,<25
+    - polars >=1.40.0,<2
+    - tqdm >=4.67.0,<5
 
 test:
   imports:
